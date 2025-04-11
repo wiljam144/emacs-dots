@@ -38,6 +38,7 @@
 ;; Help system
 (evil-define-key 'normal 'global (kbd "<leader>h i") 'info)
 (evil-define-key 'normal 'global (kbd "<leader>h a") 'apropos)
+(evil-define-key 'normal 'global (kbd "<leader>h m") 'woman)
 (evil-define-key 'normal 'global (kbd "<leader>h v") 'describe-variable)
 (evil-define-key 'normal 'global (kbd "<leader>h f") 'describe-function)
 
@@ -58,7 +59,7 @@
 (evil-define-key 'normal 'global (kbd "<leader>l e") 'eval-buffer)
 
 ;; misc (tm).
-;(evil-define-key 'insert 'global (kbd "TAB") 'indent-according-to-mode)
+(evil-define-key 'insert 'global (kbd "TAB") 'indent-according-to-mode)
 
 (evil-define-key 'normal 'global (kbd "SPC p") 'projectile-command-map)
 
