@@ -84,7 +84,7 @@
       (start-process "kitty" nil "kitty" filepath))))
 
 ;; This will infuriate a lot of people...
-;; It is my personal act of defiance against the Emacs bindings 
+;; It is my personal act of defiance against the Emacs bindings
 ;; and a clear statement of loyalty to modal editing and the clearly superior vim bindings.
 ;; Hence, I perform this blasphemous incantation, forever corrupting
 ;; the Sacrum of this Emacs instance.
@@ -100,10 +100,10 @@
   (interactive)
   ;; Reset the keymap
   (setq wl/intercept-keymap (make-sparse-keymap))
-  
+
   ;; Define a dummy function that does nothing
   (defun wl/ignore-key () (interactive))
-  
+
   ;; Block all Control key combinations
   (dotimes (i 26)
     (let* ((char (+ ?a i)))
@@ -112,13 +112,13 @@
       (unless (= char ?m)
         (let ((key (kbd (format "C-%c" char))))
           (define-key wl/intercept-keymap key #'wl/ignore-key)))))
-  
+
   ;; Block all Meta key combinations
   (dotimes (i 26)
     (let* ((char (+ ?a i))
            (key (kbd (format "M-%c" char))))
       (define-key wl/intercept-keymap key #'wl/ignore-key)))
-    
+
   ;; Block common control combinations with numbers and symbols
   (dolist (key '("C-1" "C-2" "C-3" "C-4" "C-5" "C-6" "C-7" "C-8" "C-9" "C-0"
                  "C-`" "C-~" "C-!" "C-@" "C-#" "C-$" "C-%" "C-^" "C-&" "C-*"
@@ -129,12 +129,12 @@
   (dolist (special-key '("SPC" "TAB" "ESC" "DEL" "<home>" "<end>" "<prior>" "<next>"
                           "<left>" "<right>" "<up>" "<down>" "<insert>" "<delete>"
                           "<tab>" "<backspace>"
-                          "<f1>" "<f2>" "<f3>" "<f4>" "<f5>" "<f6>" 
+                          "<f1>" "<f2>" "<f3>" "<f4>" "<f5>" "<f6>"
                           "<f7>" "<f8>" "<f9>" "<f10>" "<f11>" "<f12>"))
     (define-key wl/intercept-keymap (kbd (concat "C-" special-key)) #'wl/ignore-key))
-  
+
   ;; Make sure our keymap is higher priority than all others
-  (add-to-list 'emulation-mode-map-alists 
+  (add-to-list 'emulation-mode-map-alists
                `((wl-intercept-mode . ,wl/intercept-keymap))))
 
 ;; Create a minor mode for our interceptor
@@ -146,10 +146,10 @@
 (wl/block-all-control-meta-keys)
 (wl-intercept-mode 1)
 
-(setq emulation-mode-map-alists 
+(setq emulation-mode-map-alists
   (append '(evil-mode-map-alist)
     (remove 'evil-mode-map-alist emulation-mode-map-alists)))
 
-(add-to-list 'emulation-mode-map-alists 
+(add-to-list 'emulation-mode-map-alists
              `((wl-intercept-mode . ,wl/intercept-keymap))
              t)

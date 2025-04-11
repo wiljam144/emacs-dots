@@ -7,7 +7,7 @@
 ;; I don't need more information about GNU Emacs and the GNU system.
 (defun display-startup-echo-area-message () (message ""))
 
-(setq 
+(setq
   ;; The GNU agitprop is nice, but useless.
   inhibit-startup-screen t
   ;; Double space is a war crime.
@@ -40,10 +40,14 @@
   ;; Don't keep duplicate entries in kill ring.
   kill-do-not-save-duplicates t)
 
+;; Do not copy this, it is here purely to silence warning
+;; from woman about defvaralias.
+(setq warning-minimum-level :emergency)
+
 ;; Never mix tabs and spaces. Never use tabs, period.
 ;; We need the setq-default here because this becomes
 ;; a buffer-local variable when set.
-;; Indent width of 4, pretty much became the 
+;; Indent width of 4, pretty much became the
 ;; standard nowadays (unless you're a kernel developer, which I am not).
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
@@ -53,7 +57,7 @@
 (setq-default c-basic-offset 4)
 
 ;; Leaving whitespace in code is criminal.
-(add-hook 'before-save-hook 'delete-trailing-whitespace) 
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Unicode should always be the default.
 (set-charset-priority 'unicode)
