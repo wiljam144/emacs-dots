@@ -6,6 +6,16 @@
 (column-number-mode)
 (savehist-mode)
 
+(defun wl/disable-line-numbers ()
+  (interactive)
+  (display-line-numbers-mode -1))
+(add-hook 'dired-mode-hook 'wl/disable-line-numbers)
+(add-hook 'org-mode-hook 'wl/disable-line-numbers)
+(add-hook 'Info-mode-hook 'wl/disable-line-numbers)
+(add-hook 'woman-mode-hook 'wl/disable-line-numbers)
+(add-hook 'help-mode-hook 'wl/disable-line-numbers)
+(add-hook 'apropos-mode-hook 'wl/disable-line-numbers)
+
 ;; Remove UI clutter.
 (toggle-frame-maximized)
 (menu-bar-mode -1)

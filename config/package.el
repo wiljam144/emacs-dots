@@ -3,6 +3,7 @@
 (require 'package)
 (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/"))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -24,3 +25,4 @@
 ;; QOL
 (load "~/.config/emacs/config/packages/doom-modeline.el")
 (load "~/.config/emacs/config/packages/indent-bars.el")
+(load "~/.config/emacs/config/packages/visual-fill-column.el")
