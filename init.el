@@ -2,10 +2,10 @@
 
 ;; Things to add:
 ;; - Explore org-mode, org-roam, hyperbole. (maybe pretty dashboard using it)
+;; - Magit?
 
 ;; When on new machines comment these lines for the first run.
-(load-theme 'nord t)
-(set-face-attribute 'default nil :background "#1c1d23")
+(load "~/.config/emacs/config/themes.el")
 
 (load "~/.config/emacs/config/defaults.el")
 (load "~/.config/emacs/config/gui.el")

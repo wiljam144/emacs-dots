@@ -12,6 +12,8 @@
 
 (use-package nord-theme
   :ensure t)
+(use-package gruvbox-theme
+  :ensure t)
 
 ;; BUILT IN
 (load "~/.config/emacs/config/packages/hl-line.el")
