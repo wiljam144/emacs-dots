@@ -41,25 +41,22 @@
 (evil-define-key 'normal 'global (kbd "<leader>h m") 'woman)
 (evil-define-key 'normal 'global (kbd "<leader>h v") 'describe-variable)
 (evil-define-key 'normal 'global (kbd "<leader>h f") 'describe-function)
+(evil-define-key 'normal 'global (kbd "<leader>h s") 'describe-symbol)
 
 ;; Window management
 (evil-define-key 'normal 'global (kbd "<leader>w v") 'evil-window-vsplit)
 (evil-define-key 'normal 'global (kbd "<leader>w h") 'evil-window-split)
-;; I'm transitioning to the SPC keybinds, so there's this mess.
 (evil-define-key 'normal 'global (kbd "C-h") 'windmove-left)
 (evil-define-key 'normal 'global (kbd "C-l") 'windmove-right)
 (evil-define-key 'normal 'global (kbd "C-j") 'windmove-down)
 (evil-define-key 'normal 'global (kbd "C-k") 'windmove-up)
-(evil-define-key 'normal 'global (kbd "<leader>w h") 'windmove-left)
-(evil-define-key 'normal 'global (kbd "<leader>w l") 'windmove-right)
-(evil-define-key 'normal 'global (kbd "<leader>w j") 'windmove-down)
-(evil-define-key 'normal 'global (kbd "<leader>w k") 'windmove-up)
 
 ;; Lisp
 (evil-define-key 'normal 'global (kbd "<leader>l e") 'eval-buffer)
 
 ;; misc (tm).
-(evil-define-key 'insert 'global (kbd "TAB") 'indent-according-to-mode)
+;(evil-define-key 'insert 'global (kbd "TAB") 'indent-according-to-mode)
+(evil-define-key 'insert 'global (kbd "TAB") (lambda () (interactive) (treesit-indent)))
 
 (evil-define-key 'normal 'global (kbd "SPC p") 'projectile-command-map)
 

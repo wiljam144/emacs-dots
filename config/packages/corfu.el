@@ -3,7 +3,6 @@
 (use-package corfu
   :ensure t
   :init
-  (setq global-corfu-minibuffer nil)
   (global-corfu-mode)
   :config
   (setq tab-always-indent 'complete

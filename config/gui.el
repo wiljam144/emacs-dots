@@ -1,20 +1,10 @@
 ;; -*- coding: utf-8; lexical-binding: t -*-
 
-;; I'm an (emacs)-vim user afterall.
+;; I'm an (emacs)-vim user afterall, so relative numbering it is.
 (setq display-line-numbers-type 'relative)
-(global-display-line-numbers-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (column-number-mode)
 (savehist-mode)
-
-(defun wl/disable-line-numbers ()
-  (interactive)
-  (display-line-numbers-mode -1))
-(add-hook 'dired-mode-hook 'wl/disable-line-numbers)
-(add-hook 'org-mode-hook 'wl/disable-line-numbers)
-(add-hook 'Info-mode-hook 'wl/disable-line-numbers)
-(add-hook 'woman-mode-hook 'wl/disable-line-numbers)
-(add-hook 'help-mode-hook 'wl/disable-line-numbers)
-(add-hook 'apropos-mode-hook 'wl/disable-line-numbers)
 
 ;; Remove UI clutter.
 (toggle-frame-maximized)
@@ -26,6 +16,5 @@
     (tool-bar-mode 1)
     (tool-bar-mode -1))
 
-;; Serif fonts for the win.
 (add-to-list 'default-frame-alist '(font . "Fira Code 12"))
 (set-face-attribute 'default t :font "Fira Code 12")
