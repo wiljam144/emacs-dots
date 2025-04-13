@@ -53,8 +53,6 @@
 (setq-default tab-width 4)
 (setq backward-delete-char-untabify-method 'hungry)
 (setq-default electric-indent-inhibit t)
-;; idk why, but it was being set to 2 by default. So i just force it to 4.
-(setq-default c-basic-offset 4)
 
 ;; Leaving whitespace in code is criminal.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

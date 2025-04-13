@@ -18,9 +18,14 @@
 (load "~/.config/emacs/config/packages/dired.el")
 
 ;; IMPORTANT
+(load "~/.config/emacs/config/packages/treesit.el")
 (load "~/.config/emacs/config/packages/projectile.el")
 (load "~/.config/emacs/config/packages/vertico.el")
 (load "~/.config/emacs/config/packages/corfu.el")
+(load "~/.config/emacs/config/packages/eglot.el")
+
+;; LANGS
+(load "~/.config/emacs/config/lang/c-cpp.el")
 
 ;; QOL
 (load "~/.config/emacs/config/packages/doom-modeline.el")
