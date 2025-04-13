@@ -26,6 +26,12 @@
         (select-window other-window)
         (find-file file)))))
 
+(advice-add 'dired-up-directory :after
+            (lambda (&rest _)
+              (when (and (eq major-mode 'dired-mode)
+                         (<= (window-width) 35)) ; Only in sidebar windows
+                (dired-hide-details-mode 1))))
+
 (defun wl/find-dired-sidebar-window ()
   (let ((result nil))
     (dolist (window (window-list))
