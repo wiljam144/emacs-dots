@@ -7,14 +7,27 @@
 (savehist-mode)
 
 ;; Remove UI clutter.
-(toggle-frame-maximized)
-(menu-bar-mode -1)
 (scroll-bar-mode -1)
-;; For MacOS I like the tool bar because it displays in the system top bar.
+(tool-bar-mode -1)
+;; For MacOS I like the menu bar because it displays in the system top bar.
 ;; And not attached to the window.
 (if (eq system-type 'darwin)
-    (tool-bar-mode 1)
-    (tool-bar-mode -1))
+  (menu-bar-mode 1)
+  (progn 
+    (menu-bar-mode -1)
+    (toggle-frame-maximized)))
 
-(add-to-list 'default-frame-alist '(font . "Fira Code 12"))
-(set-face-attribute 'default t :font "Fira Code 12")
+(defun wl/fonts-darwin ()
+  (progn
+    (add-to-list 'default-frame-alist '(font . "Fira Code 15"))
+    (set-face-attribute 'default t :font "Fira Code 15")))
+
+(defun wl/fonts-other ()
+  (progn
+    (add-to-list 'default-frame-alist '(font . "Fira Code 12"))
+    (set-face-attribute 'default t :font "Fira Code 12")))
+
+(if (eq system-type 'darwin)
+  (wl/fonts-darwin)
+  (wl/fonts-other))
+
