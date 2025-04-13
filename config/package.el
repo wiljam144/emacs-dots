@@ -16,6 +16,7 @@
 ;; BUILT IN
 (load "~/.config/emacs/config/packages/hl-line.el")
 (load "~/.config/emacs/config/packages/dired.el")
+(load "~/.config/emacs/config/packages/woman.el")
 
 ;; IMPORTANT
 (load "~/.config/emacs/config/packages/treesit.el")

@@ -38,10 +38,10 @@
 ;; Help system
 (evil-define-key 'normal 'global (kbd "<leader>h i") 'info)
 (evil-define-key 'normal 'global (kbd "<leader>h a") 'apropos)
-(evil-define-key 'normal 'global (kbd "<leader>h m") 'woman)
 (evil-define-key 'normal 'global (kbd "<leader>h v") 'describe-variable)
 (evil-define-key 'normal 'global (kbd "<leader>h f") 'describe-function)
 (evil-define-key 'normal 'global (kbd "<leader>h s") 'describe-symbol)
+(evil-define-key 'normal 'global (kbd "<leader>h m") 'wl/woman)
 
 ;; Window management
 (evil-define-key 'normal 'global (kbd "<leader>w v") 'evil-window-vsplit)

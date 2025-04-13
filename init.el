@@ -1,11 +1,7 @@
 ;; -*- coding: utf-8; lexical-binding: t -*-
 
 ;; Things to add:
-;; - Treesitter, LSP support (evil-textobj-tree-sitter plugin)
-;; - Autocompletion in code
-;; - Some programming lang modes
-;; - Explore org-mode, org-roam, hyperbole.
-;; - Pretty dashboard.
+;; - Explore org-mode, org-roam, hyperbole. (maybe pretty dashboard using it)
 
 ;; When on new machines comment these lines for the first run.
 (load-theme 'nord t)

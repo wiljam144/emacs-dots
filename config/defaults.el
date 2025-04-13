@@ -40,10 +40,6 @@
   ;; Don't keep duplicate entries in kill ring.
   kill-do-not-save-duplicates t)
 
-;; Do not copy this, it is here purely to silence warning
-;; from woman about defvaralias.
-(setq warning-minimum-level :emergency)
-
 ;; Never mix tabs and spaces. Never use tabs, period.
 ;; We need the setq-default here because this becomes
 ;; a buffer-local variable when set.
