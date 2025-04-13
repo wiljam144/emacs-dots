@@ -2,7 +2,9 @@
 
 (defun wl/theme-darwin ()
   (progn
-    (load-theme 'gruvbox-dark-hard t)))
+    (load-theme 'gruvbox-dark-hard t)
+    (with-eval-after-load 'hl-line
+      (set-face-background 'hl-line "#27292a"))))
 
 (defun wl/theme-other ()
   (progn
@@ -12,5 +14,5 @@
       (set-face-background 'hl-line "#22232a"))))
 
 (if (eq system-type 'darwin)
-  (wl/theme/darwin)
+  (wl/theme-darwin)
   (wl/theme-other))
