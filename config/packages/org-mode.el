@@ -7,7 +7,6 @@
   (org-mode . visual-fill-column-mode)
   (org-mode . visual-line-mode)
   :config
-  (setq visual-fill-column-center-text t)
   (add-hook 'org-mode-hook (lambda ()
                            (setq-local word-wrap t)
                            (setq-local word-wrap-by-category t)

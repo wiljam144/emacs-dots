@@ -1,11 +1,27 @@
 ;; -*- coding: utf-8; lexical-binding: t -*-
 
+(defun wl/toggle-continuation-fringe-indicator ()
+  (interactive)
+  (setq-default
+   fringe-indicator-alist
+   (if (assq 'continuation fringe-indicator-alist)
+       (delq (assq 'continuation fringe-indicator-alist) fringe-indicator-alist)
+     (cons '(continuation right-curly-arrow left-curly-arrow) fringe-indicator-alist))))
+
+(defun wl/enable-visual-fill-column ()
+  (progn
+    (setq-local word-wrap t)
+    (setq-local word-wrap-by-category t)
+    (wl/toggle-continuation-fringe-indicator)
+    (visual-line-mode)
+    (visual-fill-column-mode)))
+
 (use-package visual-fill-column
   :ensure t
   :hook
-  (Info-mode . visual-fill-column-mode)
-  (woman-mode . visual-fill-column-mode)
-  (org-mode . visual-fill-column-mode)
-  (help-mode . visual-fill-column-mode)
+  (Info-mode . wl/enable-visual-fill-column)
+  (woman-mode . wl/enable-visual-fill-column)
+  (org-mode . wl/enable-visual-fill-column)
+  (help-mode . wl/enable-visual-fill-column)
   :config
   (setq visual-fill-column-center-text t))
