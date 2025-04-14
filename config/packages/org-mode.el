@@ -13,6 +13,19 @@
                            (setq-local word-wrap-by-category t)
                            (setq-local visual-line-fringe-indicators '(nil right-curly-arrow))))
 
+  ;; Make headers bigger.
+  (custom-theme-set-faces
+    'user
+    '(org-level-1 ((t (:inherit variable-pitch :weight bold :height 1.5))))
+    '(org-level-2 ((t (:inherit variable-pitch :weight bold :height 1.3))))
+    '(org-level-3 ((t (:inherit variable-pitch :weight bold :height 1.2))))
+    '(org-level-4 ((t (:inherit variable-pitch :weight bold :height 1.1))))
+    '(org-level-5 ((t (:inherit variable-pitch :weight bold))))
+    '(org-level-6 ((t (:inherit variable-pitch :weight bold))))
+    '(org-level-7 ((t (:inherit variable-pitch :weight bold))))
+    '(org-level-8 ((t (:inherit variable-pitch :weight bold)))))
+
+  ;; Fixes fixed-pitch for some faces. (pun indented)
   (custom-theme-set-faces
     'user
     '(org-block ((t (:inherit fixed-pitch))))
