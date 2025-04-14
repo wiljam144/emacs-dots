@@ -43,7 +43,12 @@
     '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
 
   (setq org-src-fontify-natively t)
-  (setq org-src-preserve-indentation t))
+  (setq org-src-preserve-indentation t)
+  (setq org-src-lang-modes
+        '(("python" . python-ts)
+          ("c" . c-ts)
+          ("c++" . c++-ts)
+          ("java" . java-ts))))
 
 (use-package org-bullets
   :ensure t

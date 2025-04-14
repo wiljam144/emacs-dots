@@ -1,11 +1,11 @@
 ;; -*- coding: utf-8; lexical-binding: t -*-
 
-(setq wl/darwin-font-sizes 
-  '(:fixed 150 
-    :variable 150))
+(setq wl/darwin-font-sizes
+  '(:fixed 150
+    :variable 170))
 
-(setq wl/other-font-sizes 
-  '(:fixed 120 
+(setq wl/other-font-sizes
+  '(:fixed 120
     :variable 140))
 
 (defun wl/get-font-size (symbol)

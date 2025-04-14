@@ -61,6 +61,14 @@
 
 (evil-define-key 'normal 'global (kbd "SPC p") 'projectile-command-map)
 
+;; Org-mode
+(evil-define-key 'normal 'global (kbd "<leader>o e")
+  (lambda ()
+    (interactive)
+    (if (eq major-mode 'org-mode)
+      (org-edit-src-code)
+      (org-edit-src-exit))))
+
 ;; This binding is straight up stolen from Doom Emacs.
 ;; It's the best keybind I've written, it has so much functionality
 ;; so neatly packed in it.

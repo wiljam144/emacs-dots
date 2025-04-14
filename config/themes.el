@@ -3,11 +3,13 @@
 (defun wl/theme-darwin ()
   (progn
     (load-theme 'gruvbox-dark-hard t)
-    ;; I don't want to know why the author of the theme decided on such hideous line number bar bg color.
+    ;; I don't want to know why the author of the theme decided
+    ;; on such hideous line number bar background color.
     (set-face-attribute 'line-number nil :background "#222526")
     (set-face-attribute 'line-number-current-line nil :background "#222526")
     (with-eval-after-load 'hl-line
       (set-face-background 'hl-line "#27292a"))
+    ;; I don't like indent-bars on my small MacBook screen.
     (with-eval-after-load 'indent-bars
       (remove-hook 'prog-mode-hook 'indent-bars-mode))))
 

@@ -107,6 +107,7 @@
                             ";; The only editor with a built-in psychoterapist.\n"
                             ";; Now with 73% fewer parentheses.\n"
                             ";; Absolutely zero telemetry (we promise).\n"
+                            ";; EMACS MACRO ACTED CREDO SODOM\n"
                             ";; Quicksort is Quick.\n"))
 
 (setq wl/quit-messages '("You will regret this. "
