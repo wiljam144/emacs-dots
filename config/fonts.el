@@ -6,7 +6,7 @@
 
 (setq wl/other-font-sizes 
   '(:fixed 120 
-    :variable 130))
+    :variable 140))
 
 (defun wl/get-font-size (symbol)
   (if (eq system-type 'darwin)

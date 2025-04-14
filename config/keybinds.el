@@ -57,6 +57,7 @@
 ;; misc (tm).
 ;(evil-define-key 'insert 'global (kbd "TAB") 'indent-according-to-mode)
 (evil-define-key 'insert 'global (kbd "TAB") (lambda () (interactive) (treesit-indent)))
+(evil-define-key 'insert 'global (kbd "<backtab>") (lambda () (interactive) (indent-according-to-mode)))
 
 (evil-define-key 'normal 'global (kbd "SPC p") 'projectile-command-map)
 

@@ -19,6 +19,7 @@
 (load "~/.config/emacs/config/packages/hl-line.el")
 (load "~/.config/emacs/config/packages/dired.el")
 (load "~/.config/emacs/config/packages/woman.el")
+(load "~/.config/emacs/config/packages/org-mode.el")
 
 ;; IMPORTANT
 (load "~/.config/emacs/config/packages/treesit.el")
