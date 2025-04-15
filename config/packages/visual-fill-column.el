@@ -23,5 +23,5 @@
   (woman-mode . wl/enable-visual-fill-column)
   (org-mode . wl/enable-visual-fill-column)
   (help-mode . wl/enable-visual-fill-column)
-  :config
-  (setq visual-fill-column-center-text t))
+  :custom
+  (visual-fill-column-center-text t))

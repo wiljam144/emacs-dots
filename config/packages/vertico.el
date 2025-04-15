@@ -8,8 +8,9 @@
 
 (use-package vertico
   :ensure t
+  :custom
+  (vertico-cycle t)
   :config
-  (setq vertico-cycle t)
   (vertico-mode))
 
 (use-package marginalia
