@@ -8,11 +8,11 @@
   (prog-mode . indent-bars-mode)
   :config
   (setq
-    indent-bars-pattern "."
-    indent-bars-width-frac 0.15
-    indent-bars-pad-frac 0.1
-    indent-bars-starting-column 0
-    indent-bars-zigzag nil
-    indent-bars-color-by-depth nil
-    indent-bars-highlight-current-depth nil
-    indent-bars-display-on-blank-lines t))
+   indent-bars-pattern "."
+   indent-bars-width-frac 0.15
+   indent-bars-pad-frac 0.1
+   indent-bars-starting-column 0
+   indent-bars-zigzag nil
+   indent-bars-color-by-depth nil
+   indent-bars-highlight-current-depth nil
+   indent-bars-display-on-blank-lines t))

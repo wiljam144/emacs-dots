@@ -10,17 +10,17 @@
   (interactive)
   (let ((filepath (if (buffer-file-name)
                       (file-name-directory (buffer-file-name))
-                      "~/")))
+                    "~/")))
     (dired filepath)))
 
 (defun wl/dired-find-file-other-window ()
   (interactive)
   (let ((file (dired-get-file-for-visit)))
     (if (file-directory-p file)
-      (progn 
-        (dired-find-file)
-        (dired-hide-details-mode)
-        (evil-local-set-key 'normal (kbd "SPC e") 'wl/toggle-dired-sidebar))
+        (progn
+          (dired-find-file)
+          (dired-hide-details-mode)
+          (evil-local-set-key 'normal (kbd "SPC e") 'wl/toggle-dired-sidebar))
       (let ((other-window (or (window-in-direction 'right)
                               (split-window-right))))
         (select-window other-window)
@@ -35,7 +35,7 @@
 (defun wl/find-dired-sidebar-window ()
   (let ((result nil))
     (dolist (window (window-list))
-      (when (and (with-selected-window window 
+      (when (and (with-selected-window window
                    (eq major-mode 'dired-mode))
                  (<= (window-width window) 35)) ; Assuming sidebar is narrow
         (setq result window)))
@@ -44,13 +44,13 @@
 (defun wl/open-dired-sidebar ()
   (interactive)
   (let ((sidebar-window (wl/find-dired-sidebar-window))
-        (filepath (if (buffer-file-name) 
+        (filepath (if (buffer-file-name)
                       (file-name-directory (buffer-file-name))
-                      "~/")))
+                    "~/")))
     (if sidebar-window
-      (progn 
-        (select-window sidebar-window)
-        (delete-window))
+        (progn
+          (select-window sidebar-window)
+          (delete-window))
       (progn
         (split-window-right 30)
         (dired filepath)
@@ -60,12 +60,12 @@
         (evil-local-set-key 'normal (kbd "q") 'ignore)
         (evil-local-set-key 'normal (kbd "SPC e") 'wl/toggle-dired-sidebar)))))
 
-(defun wl/toggle-dired-sidebar () 
+(defun wl/toggle-dired-sidebar ()
   (interactive)
   (if (eq major-mode 'dired-mode)
-    (delete-window)
+      (delete-window)
     (wl/open-dired-sidebar)))
 
-(add-hook 'dired-mode-hook 
-  (lambda () 
-    (display-line-numbers-mode -1)))
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (display-line-numbers-mode -1)))

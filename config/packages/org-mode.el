@@ -3,7 +3,7 @@
 (use-package org
   :ensure nil
   :hook
-  ;(org-mode . variable-pitch-mode)
+                                        ;(org-mode . variable-pitch-mode)
   (org-mode . visual-fill-column-mode)
   (org-mode . visual-line-mode)
   :custom
@@ -26,16 +26,16 @@
   (org-src-fontify-natively t)
   (org-edit-src-content-indentation 0)
   (org-src-lang-modes
-        '(("python" . python-ts)
-          ("c" . c-ts)
-          ("c++" . c++-ts)
-          ("java" . java-ts)))
+   '(("python" . python-ts)
+     ("c" . c-ts)
+     ("c++" . c++-ts)
+     ("java" . java-ts)))
 
   :config
   (add-hook 'org-mode-hook (lambda ()
-                           (setq-local word-wrap t)
-                           (setq-local word-wrap-by-category t)
-                           (setq-local visual-line-fringe-indicators '(nil right-curly-arrow))))
+                             (setq-local word-wrap t)
+                             (setq-local word-wrap-by-category t)
+                             (setq-local visual-line-fringe-indicators '(nil right-curly-arrow))))
 
   ;; I like having the headers in variable-pitch, idk why.
   (custom-theme-set-faces

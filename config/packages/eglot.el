@@ -14,14 +14,14 @@
 
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
-    '((c-ts-mode c++-ts-mode)
-      . ("clangd"
-          "-j=4"
-          "--log=error"
-          "--background-index"
-          "--clang-tidy"
-          "--cross-file-rename"
-          "--completion-style=detailed"
-          "--pch-storage=memory"
-          "--header-insertion=never"
-          "--header-insertion-decorators=0"))))
+               '((c-ts-mode c++-ts-mode)
+                 . ("clangd"
+                    "-j=4"
+                    "--log=error"
+                    "--background-index"
+                    "--clang-tidy"
+                    "--cross-file-rename"
+                    "--completion-style=detailed"
+                    "--pch-storage=memory"
+                    "--header-insertion=never"
+                    "--header-insertion-decorators=0"))))
