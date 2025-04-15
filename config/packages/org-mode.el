@@ -3,7 +3,6 @@
 (use-package org
   :ensure nil
   :hook
-                                        ;(org-mode . variable-pitch-mode)
   (org-mode . visual-fill-column-mode)
   (org-mode . visual-line-mode)
   :custom

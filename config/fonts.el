@@ -18,5 +18,3 @@
   `(default ((t :family "Fira Code" :height ,(wl/get-font-size :fixed))))
   `(fixed-pitch ((t (:family "Fira Code" :height ,(wl/get-font-size :fixed)))))
   `(variable-pitch ((t (:family "Literata" :height ,(wl/get-font-size :variable))))))
-
-(add-hook 'text-mode-hook 'variable-pitch-mode)
