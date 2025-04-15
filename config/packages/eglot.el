@@ -17,7 +17,6 @@
     '((c-ts-mode c++-ts-mode)
       . ("clangd"
           "-j=4"
-          "--malloc-trim"
           "--log=error"
           "--background-index"
           "--clang-tidy"
