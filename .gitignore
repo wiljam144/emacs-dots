@@ -3,5 +3,6 @@ eln-cache/
 elpa/
 transient/
 history
+bookmarks
 projectile-bookmarks.eld
 tree-sitter/

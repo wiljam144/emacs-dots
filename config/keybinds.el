@@ -27,9 +27,13 @@
   (evil-collection-init))
 
 ;; Keybinds for buffer management.
-(evil-define-key 'normal 'global (kbd "<leader>b") 'switch-to-buffer)
+(evil-define-key 'normal 'global (kbd "<leader>B") 'switch-to-buffer)
 (evil-define-key 'normal 'global (kbd "<leader>.") 'next-buffer)
 (evil-define-key 'normal 'global (kbd "<leader>,") 'previous-buffer)
+
+;; Keybinds for bookmarks
+(evil-define-key 'normal 'global (kbd "<leader>b s") 'bookmark-set)
+(evil-define-key 'normal 'global (kbd "<leader>b j") 'bookmark-jump)
 
 ;; Dired
 (evil-define-key 'normal 'global (kbd "<leader>e") 'wl/toggle-dired-sidebar)
