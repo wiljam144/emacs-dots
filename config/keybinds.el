@@ -105,8 +105,12 @@
 
 (setq wl/bindings-in
       ;; Indentation.
-      '(("TAB" . (lambda () (interactive) (treesit-indent)))
-        ("<backtab>" . (lambda () (interactive) (indent-according-to-mode)))))
+      '(("TAB" .
+         (lambda ()
+           (interactive)
+           (if (string-match-p "-ts-" (symbol-name major-mode))
+               (treesit-indent)
+             (indent-according-to-mode))))))
 
 (wl/binds-nm wl/bindings-nm)
 (wl/binds-in wl/bindings-in)
@@ -151,8 +155,8 @@
   (dolist (key '("C-1" "C-2" "C-3" "C-4" "C-5" "C-6" "C-7" "C-8" "C-9" "C-0"
                  "C-`" "C-~" "C-!" "C-@" "C-#" "C-$" "C-%" "C-^" "C-&" "C-*"
                  "C-(" "C-)" "C--" "C-=" "C-+" "C-]" "C-\\" "C-|" "C-;" ;; C-[ not included because it is ESC.
-                 "C-:" "C-'" "C-\"" "C-," "C-." "C-<" "C->" "C-/" "C-?" "C-_")) ())
-                                        ;(define-key wl/intercept-keymap (kbd key) #'wl/ignore-key))
+                 "C-:" "C-'" "C-\"" "C-," "C-." "C-<" "C->" "C-/" "C-?" "C-_"))
+    (define-key wl/intercept-keymap (kbd key) #'wl/ignore-key))
 
   (dolist (special-key '("SPC" "TAB" "ESC" "DEL" "<home>" "<end>" "<prior>" "<next>"
                          "<left>" "<right>" "<up>" "<down>" "<insert>" "<delete>"
