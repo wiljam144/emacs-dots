@@ -37,9 +37,23 @@
   (dolist (bind list)
     (evil-define-key 'insert 'global (kbd (car bind)) (eval (cdr bind)))))
 
+(defun wl/binds-vl (list)
+  (dolist (bind list)
+    (evil-define-key 'visual 'global (kbd (car bind)) (eval (cdr bind)))))
+
 (setq wl/bindings-nm
-      ;; Buffer management.
-      '(("<leader>B" . 'switch-to-buffer)
+        ;; Text editing.
+      '(("<leader>;" . 'comment-or-uncomment-region)
+
+        ;; Eglot.
+        ("<leader>e a" . 'eglot-code-actions)
+        ("<leader>e d" . 'eldoc)
+        ("<ledaer>e c" . 'eglot-find-declaration)
+        ("<leader>e f" . 'eglot-format)
+        ("<leader>e r" . 'eglot-rename)
+
+        ;; Buffer management.
+        ("<leader>B" . 'switch-to-buffer)
         ("<leader>." . 'next-buffer)
         ("<leader>," . 'previous-buffer)
 
@@ -48,8 +62,8 @@
         ("<leader>b j" . 'bookmark-jump)
 
         ;; Dired.
-        ("<leader>e" . 'wl/toggle-dired-sidebar)
-        ("<leader>E" . 'wl/open-dired)
+        ("<leader>d" . 'wl/toggle-dired-sidebar)
+        ("<leader>D" . 'wl/open-dired)
 
         ;; Help system.
         ("<leader>h i" . 'info)
@@ -112,8 +126,12 @@
                (treesit-indent)
              (indent-according-to-mode))))))
 
+(setq wl/bindings-vl
+      '(("<leader>i" . 'indent-region)))
+
 (wl/binds-nm wl/bindings-nm)
 (wl/binds-in wl/bindings-in)
+(wl/binds-vl wl/bindings-vl)
 
 ;; This will infuriate a lot of people...
 ;; It is my personal act of defiance against the Emacs bindings
