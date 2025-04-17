@@ -6,6 +6,7 @@
 (use-package doom-modeline
   :after nerd-icons
   :ensure t
-  :config
-  (doom-modeline-mode 1)
-  (setq doom-modeline-height 30))
+  :custom
+  (doom-modeline-height 30)
+  :hook
+  (after-init . doom-modeline-mode))

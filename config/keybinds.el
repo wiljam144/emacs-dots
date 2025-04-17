@@ -90,9 +90,9 @@
         ("<leader>D" 'wl/open-dired)
 
         ;; Projectile.
-        ("SPC p" 'projectile-command-map)
+        ('projectile "SPC p" 'projectile-command-map)
         ;; This binding is straight up stolen from Doom Emacs.
-        ("SPC SPC"
+        ('projectile "SPC SPC"
           (lambda ()
           (interactive)
            (if (projectile-project-p)
