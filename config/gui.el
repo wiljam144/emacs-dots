@@ -15,5 +15,5 @@
 ;; For MacOS I like the menu bar because it displays in the system top bar.
 ;; And not attached to the window.
 (if (eq system-type 'darwin)
-  (menu-bar-mode 1)
+    (menu-bar-mode 1)
   (menu-bar-mode -1))

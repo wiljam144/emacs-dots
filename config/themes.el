@@ -23,5 +23,5 @@
       (setq indent-bars-color '(highlight :face-bg t :blend 0.6)))))
 
 (if (eq system-type 'darwin)
-  (wl/theme-darwin)
+    (wl/theme-darwin)
   (wl/theme-other))

@@ -8,37 +8,37 @@
 (defun display-startup-echo-area-message () (message ""))
 
 (setq
-  ;; The GNU agitprop is nice, but useless.
-  inhibit-startup-screen t
-  ;; Double space is a war crime.
-  sentence-end-double-space nil
-  ;; Never dare to ding at me.
-  ring-bell-function 'ignore
-  ;; Save existing clipboard into kill-ring, before replacing it.
-  save-interprogram-paste-before-kill t
-  ;; Minibuffer is for prompts, not the GUI.
-  use-dialog-box nil
-  ;; Fix undo commands affecting the mark.
-  mark-even-if-inactive nil
-  ;; use y/n instead of yes/no. The docs advise against it.
-  ;; They can go and reread GNU C coding style guides, instead of making such claims.
-  use-short-answers t
-  ;; prefer newer elisp files.
-  load-prefer-newer t
-  ;; If native-comp is having some trouble, there's not very much I can do.
-  native-comp-async-report-warnings-errors 'silent
-  ;; Unicode ellipses are better.
-  truncate-string-ellipsis "…"
-  ;; I want to close these fast, so switch to it so I can just hit 'q'
-  help-window-select t
-  ;; This certainly can't hurt anything.
-  delete-by-moving-to-trash t
-  ;; Highlight error messages more aggressively.
-  next-error-message-highlight t
-  ;; Don't let the minibuffer muck up my window tiling.
-  read-minibuffer-restore-windows t
-  ;; Don't keep duplicate entries in kill ring.
-  kill-do-not-save-duplicates t)
+ ;; The GNU agitprop is nice, but useless.
+ inhibit-startup-screen t
+ ;; Double space is a war crime.
+ sentence-end-double-space nil
+ ;; Never dare to ding at me.
+ ring-bell-function 'ignore
+ ;; Save existing clipboard into kill-ring, before replacing it.
+ save-interprogram-paste-before-kill t
+ ;; Minibuffer is for prompts, not the GUI.
+ use-dialog-box nil
+ ;; Fix undo commands affecting the mark.
+ mark-even-if-inactive nil
+ ;; use y/n instead of yes/no. The docs advise against it.
+ ;; They can go and reread GNU C coding style guides, instead of making such claims.
+ use-short-answers t
+ ;; prefer newer elisp files.
+ load-prefer-newer t
+ ;; If native-comp is having some trouble, there's not very much I can do.
+ native-comp-async-report-warnings-errors 'silent
+ ;; Unicode ellipses are better.
+ truncate-string-ellipsis "…"
+ ;; I want to close these fast, so switch to it so I can just hit 'q'
+ help-window-select t
+ ;; This certainly can't hurt anything.
+ delete-by-moving-to-trash t
+ ;; Highlight error messages more aggressively.
+ next-error-message-highlight t
+ ;; Don't let the minibuffer muck up my window tiling.
+ read-minibuffer-restore-windows t
+ ;; Don't keep duplicate entries in kill ring.
+ kill-do-not-save-duplicates t)
 
 ;; Never mix tabs and spaces. Never use tabs, period.
 ;; We need the setq-default here because this becomes
@@ -62,11 +62,11 @@
 
 ;; Fix scrolling behaviour.
 (setq
-  fast-but-imprecise-scrolling t
-  scroll-conservatively 101
-  scroll-up-aggressively 0.01
-  scroll-down-aggressively 0.01
-  auto-window-vscroll nil)
+ fast-but-imprecise-scrolling t
+ scroll-conservatively 101
+ scroll-up-aggressively 0.01
+ scroll-down-aggressively 0.01
+ auto-window-vscroll nil)
 
 ;; Auto-closing parentheses.
 (setq electric-pair-preserve-balance t

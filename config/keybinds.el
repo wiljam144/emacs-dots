@@ -93,11 +93,11 @@
         ('projectile "SPC p" 'projectile-command-map)
         ;; This binding is straight up stolen from Doom Emacs.
         ('projectile "SPC SPC"
-          (lambda ()
-          (interactive)
-           (if (projectile-project-p)
-               (projectile-find-file)
-             (projectile-switch-project))))
+                     (lambda ()
+                       (interactive)
+                       (if (projectile-project-p)
+                           (projectile-find-file)
+                         (projectile-switch-project))))
 
         ;; Org-mode.
         ;; This one needs to be global so the other branch of the if will work.
@@ -127,7 +127,7 @@
 
 (setq wl/bindings-insert
       '(("TAB"
-          (lambda ()
+         (lambda ()
            (interactive)
            (if (string-match-p "-ts-" (symbol-name major-mode))
                (treesit-indent)
