@@ -20,7 +20,7 @@
         (progn
           (dired-find-file)
           (dired-hide-details-mode)
-          (evil-local-set-key 'normal (kbd "SPC e") 'wl/toggle-dired-sidebar))
+          (evil-local-set-key 'normal (kbd "SPC d") 'wl/toggle-dired-sidebar))
       (let ((other-window (or (window-in-direction 'right)
                               (split-window-right))))
         (select-window other-window)

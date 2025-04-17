@@ -29,87 +29,95 @@
   :config
   (evil-collection-init))
 
-(defun wl/binds-nm (list)
+;; Idk if this mess of elisp was worth it instead of
+;; just a lot of (evil-define-key) invocations,
+;; but I don't care.
+(defun wl/mode-binding (bind state)
+  (let ((module-name (symbol-name (eval (nth 0 bind))))
+        (chord (kbd (nth 1 bind)))
+        (func (eval (nth 2 bind))))
+    (cond
+     ((string-match-p "-map" module-name)
+      (evil-define-key state (symbol-value (eval (nth 0 bind))) chord func))
+     ((string-match-p "-mode" module-name)
+      (with-eval-after-load (eval (nth 0 bind))
+        (evil-define-key state (symbol-value (intern (concat module-name "-map"))) chord func)))
+     (t
+      (with-eval-after-load (eval (nth 0 bind))
+        (evil-define-key state (symbol-value (intern (concat module-name "-mode-map"))) chord func))))))
+
+(defun wl/define-binds (list state)
   (dolist (bind list)
-    (evil-define-key 'normal 'global (kbd (car bind)) (eval (cdr bind)))))
+    (let ((len (length bind)))
+      (cond
+       ((= len 1) (warn "Invalid binding: 1 argument."))
+       ((= len 2) (evil-define-key state 'global (kbd (nth 0 bind)) (eval (nth 1 bind))))
+       ((= len 3) (wl/mode-binding bind state))
+       ((> len 3) (warn "Invalid binding: > 3 arguments."))))))
 
-(defun wl/binds-in (list)
-  (dolist (bind list)
-    (evil-define-key 'insert 'global (kbd (car bind)) (eval (cdr bind)))))
-
-(defun wl/binds-vl (list)
-  (dolist (bind list)
-    (evil-define-key 'visual 'global (kbd (car bind)) (eval (cdr bind)))))
-
-(setq wl/bindings-nm
-        ;; Text editing.
-      '(("<leader>;" . 'comment-or-uncomment-region)
-
-        ;; Eglot.
-        ("<leader>e a" . 'eglot-code-actions)
-        ("<leader>e d" . 'eldoc)
-        ("<ledaer>e c" . 'eglot-find-declaration)
-        ("<leader>e f" . 'eglot-format)
-        ("<leader>e r" . 'eglot-rename)
-
-        ;; Buffer management.
-        ("<leader>B" . 'switch-to-buffer)
-        ("<leader>." . 'next-buffer)
-        ("<leader>," . 'previous-buffer)
-
-        ;; Bookmarks.
-        ("<leader>b s" . 'bookmark-set)
-        ("<leader>b j" . 'bookmark-jump)
-
-        ;; Dired.
-        ("<leader>d" . 'wl/toggle-dired-sidebar)
-        ("<leader>D" . 'wl/open-dired)
-
-        ;; Help system.
-        ("<leader>h i" . 'info)
-        ("<leader>h a" . 'apropos)
-        ("<leader>h v" . 'describe-variable)
-        ("<leader>h f" . 'describe-function)
-        ("<leader>h s" . 'describe-symbol)
-        ("<leader>h m" . 'wl/woman)
+(setq wl/bindings-normal
+      '(;; Buffer management.
+        ("<leader>B" 'switch-to-buffer)
+        ("<leader>." 'next-buffer)
+        ("<leader>," 'previous-buffer)
 
         ;; Window management.
-        ("<leader>w v" . 'evil-window-vsplit)
-        ("<leader>w h" . 'evil-window-split)
-        ("C-h" . 'windmove-left)
-        ("C-l" . 'windmove-right)
-        ("C-j" . 'windmove-down)
-        ("C-k" . 'windmove-up)
+        ("<leader>w v" 'evil-window-vsplit)
+        ("<leader>w h" 'evil-window-split)
+        ("C-h" 'windmove-left)
+        ("C-l" 'windmove-right)
+        ("C-j" 'windmove-down)
+        ("C-k" 'windmove-up)
 
         ;; Lisp.
-        ("<leader>l b" . 'eval-buffer)
-        ("<leader>l e" . 'eval-expression)
+        ("<leader>l b" 'eval-buffer)
+        ("<leader>l e" 'eval-expression)
+
+        ;; Bookmarks.
+        ("<leader>b s" 'bookmark-set)
+        ("<leader>b j" 'bookmark-jump)
+
+        ;; Help systems.
+        ("<leader>h i" 'info)
+        ("<leader>h a" 'apropos)
+        ("<leader>h v" 'describe-variable)
+        ("<leader>h f" 'describe-function)
+        ("<leader>h s" 'describe-symbol)
+        ("<leader>h m" 'wl/woman)
+
+        ;; Dired.
+        ("<leader>d" 'wl/toggle-dired-sidebar)
+        ("<leader>D" 'wl/open-dired)
 
         ;; Projectile.
-        ("SPC p" . 'projectile-command-map)
+        ("SPC p" 'projectile-command-map)
+        ;; This binding is straight up stolen from Doom Emacs.
+        ("SPC SPC"
+          (lambda ()
+          (interactive)
+           (if (projectile-project-p)
+               (projectile-find-file)
+             (projectile-switch-project))))
 
         ;; Org-mode.
-        ("<leader>o e" .
+        ;; This one needs to be global so the other branch of the if will work.
+        ("<leader>o e"
          (lambda ()
            (interactive)
            (if (eq major-mode 'org-mode)
                (org-edit-src-code)
              (org-edit-src-exit))))
 
-        ;; This binding is straight up stolen from Doom Emacs.
-        ;; It's the best keybind I've written, it has so much functionality
-        ;; so neatly packed in it.
-        ("SPC SPC" .
-         (lambda ()
-           (interactive)
-           (if (projectile-project-p)
-               (projectile-find-file)
-             (projectile-switch-project))))
-
+        ;; Eglot.
+        ('eglot "<leader>e a" 'eglot-code-actions)
+        ('eglot "<leader>e d" 'eldoc)
+        ('eglot "<leader>e c" 'eglot-find-declaration)
+        ('eglot "<leader>e f" 'eglot-format)
+        ('eglot "<leader>e r" 'eglot-rename)
 
         ;; To be honest I don't really like any of the
         ;; Emacs's terminal options, hence I use kitty in another DE window.
-        ("<leader>`" .
+        ("<leader>`"
          (lambda ()
            (interactive)
            (let ((filepath (if (buffer-file-name)
@@ -117,21 +125,21 @@
                              "/home/wiljam")))
              (start-process "kitty" nil "kitty" filepath))))))
 
-(setq wl/bindings-in
-      ;; Indentation.
-      '(("TAB" .
-         (lambda ()
+(setq wl/bindings-insert
+      '(("TAB"
+          (lambda ()
            (interactive)
            (if (string-match-p "-ts-" (symbol-name major-mode))
                (treesit-indent)
              (indent-according-to-mode))))))
 
-(setq wl/bindings-vl
-      '(("<leader>i" . 'indent-region)))
+(setq wl/bindings-visual
+      '(("<leader>i" 'indent-region)
+        ("<leader>;" 'comment-or-uncomment-region)))
 
-(wl/binds-nm wl/bindings-nm)
-(wl/binds-in wl/bindings-in)
-(wl/binds-vl wl/bindings-vl)
+(wl/define-binds wl/bindings-normal 'normal)
+(wl/define-binds wl/bindings-insert 'insert)
+(wl/define-binds wl/bindings-visual 'visual)
 
 ;; This will infuriate a lot of people...
 ;; It is my personal act of defiance against the Emacs bindings
