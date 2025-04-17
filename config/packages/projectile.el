@@ -2,5 +2,5 @@
 
 (use-package projectile
   :ensure t
-  :config
-  (projectile-mode +1))
+  :hook
+  (after-init . projectile-mode))

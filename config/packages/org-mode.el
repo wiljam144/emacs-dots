@@ -5,6 +5,10 @@
   :hook
   (org-mode . visual-fill-column-mode)
   (org-mode . visual-line-mode)
+  (org-mode . (lambda ()
+                (setq-local word-wrap t)
+                (setq-local word-wrap-by-category t)
+                (setq-local visual-line-fringe-indicators '(nil right-curly-arrow))))
   :custom
   ;; org styling
   (org-startup-indented t)
@@ -30,23 +34,15 @@
      ("c++" . c++-ts)
      ("java" . java-ts)))
 
-  :config
-  (add-hook 'org-mode-hook (lambda ()
-                             (setq-local word-wrap t)
-                             (setq-local word-wrap-by-category t)
-                             (setq-local visual-line-fringe-indicators '(nil right-curly-arrow))))
-
-  ;; I like having the headers in variable-pitch, idk why.
-  (custom-theme-set-faces
-   'user
-   '(org-level-1 ((t (:inherit variable-pitch :weight bold :height 1.5))))
-   '(org-level-2 ((t (:inherit variable-pitch :weight bold :height 1.3))))
-   '(org-level-3 ((t (:inherit variable-pitch :weight bold :height 1.2))))
-   '(org-level-4 ((t (:inherit variable-pitch :weight bold :height 1.1))))
-   '(org-level-5 ((t (:inherit variable-pitch :weight bold))))
-   '(org-level-6 ((t (:inherit variable-pitch :weight bold))))
-   '(org-level-7 ((t (:inherit variable-pitch :weight bold))))
-   '(org-level-8 ((t (:inherit variable-pitch :weight bold))))))
+  :custom-face
+  (org-level-1 ((t (:inherit variable-pitch :weight bold :height 1.5))))
+  (org-level-2 ((t (:inherit variable-pitch :weight bold :height 1.3))))
+  (org-level-3 ((t (:inherit variable-pitch :weight bold :height 1.2))))
+  (org-level-4 ((t (:inherit variable-pitch :weight bold :height 1.1))))
+  (org-level-5 ((t (:inherit variable-pitch :weight bold))))
+  (org-level-6 ((t (:inherit variable-pitch :weight bold))))
+  (org-level-7 ((t (:inherit variable-pitch :weight bold))))
+  (org-level-8 ((t (:inherit variable-pitch :weight bold)))))
 
 ;; this package is godsend, I swear.
 (use-package org-modern

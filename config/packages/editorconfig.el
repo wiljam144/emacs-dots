@@ -2,5 +2,5 @@
 
 (use-package editorconfig
   :ensure t
-  :config
-  (editorconfig-mode 1))
+  :hook
+  (after-init . editorconfig-mode))

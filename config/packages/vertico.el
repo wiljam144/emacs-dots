@@ -10,8 +10,8 @@
   :ensure t
   :custom
   (vertico-cycle t)
-  :config
-  (vertico-mode))
+  :hook
+  (after-init . vertico-mode))
 
 (use-package marginalia
   :ensure t
@@ -19,5 +19,5 @@
   :custom
   (marginalia-max-relative-age 0)
   (marginalia-align 'right)
-  :init
-  (marginalia-mode))
+  :hook
+  (after-init . marginalia-mode))
