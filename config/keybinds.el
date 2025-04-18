@@ -64,6 +64,7 @@
         ;; Window management.
         ("<leader>w v" 'evil-window-vsplit)
         ("<leader>w h" 'evil-window-split)
+        ("<leader>w k" 'delete-window)
         ("C-h" 'windmove-left)
         ("C-l" 'windmove-right)
         ("C-j" 'windmove-down)
@@ -107,6 +108,47 @@
            (if (eq major-mode 'org-mode)
                (org-edit-src-code)
              (org-edit-src-exit))))
+        ('org "<leader>m h" 'org-metaleft)
+        ('org "<leader>m l" 'org-metaright)
+        ('org "<leader>m k" 'org-metaup)
+        ('org "<leader>m j" 'org-metadown)
+        ('org "<leader>m H" 'org-shiftmetaleft)
+        ('org "<leader>m L" 'org-shiftmetaright)
+        ('org "<leader>m K" 'org-shiftmetaup)
+        ('org "<leader>m J" 'org-shiftmetadown)
+        ;; movement.
+        ;; next
+        ('org "<leader>n h" 'org-next-visible-heading)
+        ('org "<leader>n l" 'org-next-link)
+        ;; previous
+        ('org "<leader>p h" 'org-previous-visible-heading)
+        ('org "<leader>p l" 'org-previous-link)
+        ;; up
+        ('org "<leader>u h" 'outline-up-heading)
+        ;; create/capture
+        ('org "<leader>c h" 'org-meta-return)
+        ('org "<leader>c l" 'org-insert-link)
+        ('org "<leader>c t" 'org-timestamp)
+        ('org "<leader>c f" 'org-capture-finalize)
+        ('org "<leader>c k" 'org-capture-kill)
+        ;;lists
+        ('org "<leader>-" 'org-cycle-list-bullet)
+        ;; checkbox & todo
+        ('org "<leader>x c" 'org-toggle-checkbox)
+        ('org "<leader>x t" 'org-todo)
+        ;; timestamps
+        ('org "<leader>s i" 'org-timestamp-inactive)
+        ('org "<leader>s h" 'org-timestamp-down-day)
+        ('org "<leader>s j" 'org-timestamp-down)
+        ('org "<leader>s k" 'org-timestamp-up)
+        ('org "<leader>s l" 'org-timestamp-up-day)
+        ;; org table
+        ('org "<leader>t a" 'org-table-align)
+        ('org "<leader>t h" 'org-table-hline-and-move)
+        ('org "<leader>t s" 'org-table-sort-lines)
+        ;; org links
+        ('org "<leader>p c" 'org-store-link)
+        ('org "<leader>p o" 'org-open-at-point)
 
         ;; Eglot.
         ('eglot "<leader>e a" 'eglot-code-actions)
@@ -115,15 +157,18 @@
         ('eglot "<leader>e f" 'eglot-format)
         ('eglot "<leader>e r" 'eglot-rename)
 
+
         ;; To be honest I don't really like any of the
         ;; Emacs's terminal options, hence I use kitty in another DE window.
-        ("<leader>`"
+        ("<leader>~"
          (lambda ()
            (interactive)
            (let ((filepath (if (buffer-file-name)
                                (file-name-directory (buffer-file-name))
                              "/home/wiljam")))
-             (start-process "kitty" nil "kitty" filepath))))))
+             (start-process "kitty" nil "kitty" filepath))))
+        ;; I actually like vterm.
+        ("<leader>`" 'vterm-other-window)))
 
 (setq wl/bindings-insert
       '(("TAB"

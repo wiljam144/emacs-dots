@@ -30,6 +30,7 @@
 
 ;; OTHER
 (load "~/.config/emacs/config/packages/org-mode.el")
+(load "~/.config/emacs/config/packages/vterm.el")
 
 ;; LANGS
 (load "~/.config/emacs/config/lang/c-cpp.el")
