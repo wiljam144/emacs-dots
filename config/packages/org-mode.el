@@ -9,9 +9,13 @@
                 (setq-local word-wrap t)
                 (setq-local word-wrap-by-category t)
                 (setq-local visual-line-fringe-indicators '(nil right-curly-arrow))))
+  (after-init . (lambda ()
+                  (with-eval-after-load 'org
+                    (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.7)))))
   :custom
   ;; org styling
   (org-startup-indented t)
+  (org-startup-with-latex-preview t)
   (org-hide-emphasis-markers t)
   (org-hide-leading-stars t)
   (org-pretty-entities t)
@@ -33,16 +37,23 @@
      ("c" . c-ts)
      ("c++" . c++-ts)
      ("java" . java-ts)))
+  ;; org capture
+  (org-capture-templates
+   '(("t" "Todo" entry (file+headline "~/digital-vault/notes/tasks.org" "Tasks")
+      "* TODO %?\n %i\n %a")
+     ("j" "Journal" entry (file+datetree "~/digital-vault/notes/journal.org")
+      "* %?\nEntered on %U\n %i\n %a")))
 
   :custom-face
   (org-level-1 ((t (:inherit variable-pitch :weight bold :height 1.5))))
   (org-level-2 ((t (:inherit variable-pitch :weight bold :height 1.3))))
   (org-level-3 ((t (:inherit variable-pitch :weight bold :height 1.2))))
   (org-level-4 ((t (:inherit variable-pitch :weight bold :height 1.1))))
-  (org-level-5 ((t (:inherit variable-pitch :weight bold))))
-  (org-level-6 ((t (:inherit variable-pitch :weight bold))))
-  (org-level-7 ((t (:inherit variable-pitch :weight bold))))
-  (org-level-8 ((t (:inherit variable-pitch :weight bold)))))
+  ;; I use org-levels 5 to 8 for todo's.
+  (org-level-5 ((t (:inherit fixed-pitch))))
+  (org-level-6 ((t (:inherit fixed-pitch))))
+  (org-level-7 ((t (:inherit fixed-pitch))))
+  (org-level-8 ((t (:inherit fixed-pitch)))))
 
 ;; this package is godsend, I swear.
 (use-package org-modern

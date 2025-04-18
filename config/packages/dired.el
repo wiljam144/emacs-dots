@@ -58,7 +58,7 @@
         (local-set-key (kbd "RET") 'wl/dired-find-file-other-window)
         (local-set-key (kbd "<return>") 'wl/dired-find-file-other-window)
         (evil-local-set-key 'normal (kbd "q") 'ignore)
-        (evil-local-set-key 'normal (kbd "SPC e") 'wl/toggle-dired-sidebar)))))
+        (evil-local-set-key 'normal (kbd "SPC d") 'wl/toggle-dired-sidebar)))))
 
 (defun wl/toggle-dired-sidebar ()
   (interactive)
