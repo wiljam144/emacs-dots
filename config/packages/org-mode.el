@@ -64,3 +64,11 @@
   :custom
   (org-modern-replace-stars "◉○◉○◉")
   (org-modern-star 'replace))
+
+(use-package org-appear
+  :ensure t
+  :hook (org-mode . org-appear-mode))
+
+(use-package org-fragtog
+  :ensure t
+  :hook (org-mode . org-fragtog-mode))
