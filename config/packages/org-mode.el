@@ -41,10 +41,14 @@
      ("java" . java-ts)))
   ;; org capture
   (org-capture-templates
-   '(("t" "Todo" entry (file+headline "~/digital-vault/notes/tasks.org" "Tasks")
-      "* TODO %?\n %i\n %a")
+   '(("t" "Todo" plain (file+headline "~/digital-vault/notes/tasks.org" "Tasks")
+      "***** TODO %?\nEntered on %U\n %i\n %a")
      ("j" "Journal" entry (file+datetree "~/digital-vault/notes/journal.org")
-      "* %?\nEntered on %U\n %i\n %a")))
+      "* %?\nEntered on %U\n %i\n %a")
+     ("i" "Idea" item (file+headline "~/digital-vault/notes/ideas.org" "Ideas")
+      "%?\n %a")
+     ("r" "Research later" item (file+headline "~/digital-vault/notes/ideas.org" "Research later")
+      "%?\n %a")))
 
   :custom-face
   (org-level-1 ((t (:inherit variable-pitch :weight bold :height 1.5))))
