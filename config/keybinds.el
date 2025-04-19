@@ -122,9 +122,9 @@
         ;; next
         ('org "<leader>n h" 'org-next-visible-heading)
         ('org "<leader>n l" 'org-next-link)
-        ;; previous
-        ('org "<leader>p h" 'org-previous-visible-heading)
-        ('org "<leader>p l" 'org-previous-link)
+        ;; last
+        ('org "<leader>l h" 'org-previous-visible-heading)
+        ('org "<leader>l l" 'org-previous-link)
         ;; up
         ('org "<leader>u h" 'outline-up-heading)
         ;; create/capture
