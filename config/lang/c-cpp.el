@@ -1,12 +1,22 @@
 ;; -*- coding: utf-8; lexical-binding: t -*-
 
-(with-eval-after-load 'c-ts-mode
-  ;; Indentation settings
-  (setq c-ts-mode-indent-offset 4)
-  (setq c-ts-mode-indent-style 'linux))
+;; kernel developer moment.
+(add-hook 'c-ts-mode-hook
+          (lambda ()
+            ;; Use spaces, not tabs
+            (setq-local indent-tabs-mode t)
+            ;; Each indent step is 4 spaces
+            (setq-local c-ts-mode-indent-offset 8)
+            ;; Display tabs (if any) as 4 spaces wide
+            (setq-local tab-width 8)))
 
-;; Configure C++ mode
-(with-eval-after-load 'c++-ts-mode
-  ;; Indentation settings
-  (setq c++-ts-mode-indent-offset 4)
-  (setq c++-ts-mode-indent-style 'stroustrup))
+
+;; sane people config.
+(add-hook 'c++-ts-mode-hook
+          (lambda ()
+            ;; Use spaces, not tabs
+            (setq-local indent-tabs-mode nil)
+            ;; Each indent step is 4 spaces
+            (setq-local c-ts-mode-indent-offset 4)
+            ;; Display tabs (if any) as 4 spaces wide
+            (setq-local tab-width 4)))

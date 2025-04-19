@@ -16,6 +16,7 @@
   ;; org styling
   (org-startup-indented t)
   (org-startup-with-latex-preview t)
+  (org-startup-with-inline-images t)
   (org-hide-emphasis-markers t)
   (org-hide-leading-stars t)
   (org-pretty-entities t)
@@ -29,6 +30,7 @@
   ;; org behaviour
   (org-insert-heading-respect-content t)
   (org-catch-invisible-edits 'show-and-error)
+  (org-return-follows-link t)
   ;; org src blocks
   (org-src-fontify-natively t)
   (org-edit-src-content-indentation 0)

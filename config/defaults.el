@@ -136,3 +136,5 @@
   (setq prettify-symbols-alist '(("lambda" . 955))))
 (add-hook 'prog-mode-hook 'wl/pretty-lambda)
 (global-prettify-symbols-mode 1)
+
+(add-hook 'after-init-hook (lambda () (message (emacs-init-time))))

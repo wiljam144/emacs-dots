@@ -58,6 +58,7 @@
 (setq wl/bindings-normal
       '(;; Buffer management.
         ("<leader>B" 'switch-to-buffer)
+        ("<leader>b k" 'kill-buffer)
         ("<leader>." 'next-buffer)
         ("<leader>," 'previous-buffer)
 
@@ -65,6 +66,7 @@
         ("<leader>w v" 'evil-window-vsplit)
         ("<leader>w h" 'evil-window-split)
         ("<leader>w k" 'delete-window)
+        ("<leader>w s" 'scratch-buffer)
         ("C-h" 'windmove-left)
         ("C-l" 'windmove-right)
         ("C-j" 'windmove-down)
