@@ -22,6 +22,8 @@
 (load "~/.config/emacs/config/packages/woman.el")
 
 ;; IMPORTANT
+;; not really important but it needs to be loaded before treesitter.
+(load "~/.config/emacs/config/packages/editorconfig.el")
 (load "~/.config/emacs/config/packages/treesit.el")
 (load "~/.config/emacs/config/packages/projectile.el")
 (load "~/.config/emacs/config/packages/vertico.el")

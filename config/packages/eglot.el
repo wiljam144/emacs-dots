@@ -8,7 +8,7 @@
     "Start eglot for current buffer unless it's an Emacs Lisp buffer."
     (unless (derived-mode-p 'emacs-lisp-mode)
       (eglot-ensure)))
-  
+
   ;; Configure clangd for some nice things and most importantly,
   ;; to not auto-insert headers.
   (add-to-list 'eglot-server-programs
@@ -23,10 +23,12 @@
                     "--pch-storage=memory"
                     "--header-insertion=never"
                     "--header-insertion-decorators=0")))
-  
+
   :custom
   ;; My god, do I hate those.
-  (eglot-ignored-server-capabilities '(:inlayHintProvider))
-  
+  ;; Inlay hints are too noisy and distracting,
+  ;; and I can format myself when i want with eglot-format
+  (eglot-ignored-server-capabilities '(:inlayHintProvider :documentOnTypeFormattingProvider))
+
   :hook
   (prog-mode . wl/eglot-ensure-unless-elisp))

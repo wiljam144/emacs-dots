@@ -50,7 +50,7 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq backward-delete-char-untabify-method 'hungry)
-(setq-default electric-indent-inhibit t)
+;(setq-default electric-indent-inhibit t)
 
 ;; Leaving whitespace in code is criminal.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

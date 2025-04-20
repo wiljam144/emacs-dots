@@ -3,4 +3,5 @@
 (use-package editorconfig
   :ensure t
   :hook
-  (after-init . editorconfig-mode))
+  (after-init . editorconfig-mode)
+  (prog-mode . editorconfig-mode))

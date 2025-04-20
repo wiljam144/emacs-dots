@@ -71,6 +71,10 @@
         ("C-l" 'windmove-right)
         ("C-j" 'windmove-down)
         ("C-k" 'windmove-up)
+        ("<leader>w H" 'enlarge-window-horizontally)
+        ("<leader>w J" 'shrink-window)
+        ("<leader>w K" 'enlarge-window)
+        ("<leader>w L" 'shrink-window-horizontally)
 
         ;; Lisp.
         ("<leader>l b" 'eval-buffer)
@@ -132,6 +136,7 @@
         ('org "<leader>c l" 'org-insert-link)
         ('org "<leader>c t" 'org-timestamp)
         ('org "<leader>c k" 'org-capture-finalize)
+        ("<leader>c c" 'org-capture)
         ;;lists
         ('org "<leader>-" 'org-cycle-list-bullet)
         ;; checkbox & todo
@@ -152,7 +157,8 @@
         ('org "<leader>l o" 'org-open-at-point)
         ;; org mode roam
         ('org "<leader>r i" 'org-roam-node-insert)
-        ('org "<leader>r f" 'org-roam-node-file)
+        ("<leader>r f" 'org-roam-node-file)
+        ("<leader>r c" 'org-roam-capture)
 
         ;; Eglot.
         ('eglot "<leader>e a" 'eglot-code-actions)
