@@ -48,7 +48,11 @@
      ("i" "Idea" item (file+headline "~/digital-vault/notes/ideas.org" "Ideas")
       "%?\n %a")
      ("r" "Research later" item (file+headline "~/digital-vault/notes/ideas.org" "Research later")
-      "%?\n %a")))
+      "%?\n %a")
+     ("c" "Contemplation" entry (file+headline "~/digital-vault/notes/contemplatio.org" "Contemplations")
+      "* %? %t\n")
+     ("q" "Quote" plain (file+headline "~/digital-vault/notes/contemplatio.org" "Quotes")
+      "#+BEGIN_QUOTE\n%?\n#+END_QUOTE\n\n")))
 
   :custom-face
   (org-level-1 ((t (:inherit variable-pitch :weight bold :height 1.5))))
@@ -76,3 +80,9 @@
 (use-package org-fragtog
   :ensure t
   :hook (org-mode . org-fragtog-mode))
+
+(use-package org-roam
+  :ensure t
+  :hook (after-init . org-roam-db-autosync-mode)
+  :custom
+  (org-roam-directory (file-truename "~/digital-vault/notes/roam")))

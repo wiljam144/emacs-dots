@@ -131,8 +131,7 @@
         ('org "<leader>c h" 'org-meta-return)
         ('org "<leader>c l" 'org-insert-link)
         ('org "<leader>c t" 'org-timestamp)
-        ('org "<leader>c f" 'org-capture-finalize)
-        ('org "<leader>c k" 'org-capture-kill)
+        ('org "<leader>c k" 'org-capture-finalize)
         ;;lists
         ('org "<leader>-" 'org-cycle-list-bullet)
         ;; checkbox & todo
@@ -149,8 +148,11 @@
         ('org "<leader>t h" 'org-table-hline-and-move)
         ('org "<leader>t s" 'org-table-sort-lines)
         ;; org links
-        ('org "<leader>p c" 'org-store-link)
-        ('org "<leader>p o" 'org-open-at-point)
+        ('org "<leader>l c" 'org-store-link)
+        ('org "<leader>l o" 'org-open-at-point)
+        ;; org mode roam
+        ('org "<leader>r i" 'org-roam-node-insert)
+        ('org "<leader>r f" 'org-roam-node-file)
 
         ;; Eglot.
         ('eglot "<leader>e a" 'eglot-code-actions)

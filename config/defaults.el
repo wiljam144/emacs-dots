@@ -12,6 +12,8 @@
  inhibit-startup-screen t
  ;; Double space is a war crime.
  sentence-end-double-space nil
+ ;; I don't care about subprocesses.
+ confirm-kill-processes nil
  ;; Never dare to ding at me.
  ring-bell-function 'ignore
  ;; Save existing clipboard into kill-ring, before replacing it.
