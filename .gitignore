@@ -6,4 +6,6 @@ history
 tramp
 bookmarks
 projectile-bookmarks.eld
+org-roam.db
+.org-id-locations
 tree-sitter/

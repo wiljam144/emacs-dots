@@ -1,5 +1,22 @@
 ;; -*- coding: utf-8; lexical-binding: t -*-
 
+;; This is a fun one, for fleeting notes that are meant to be processed properly later,
+;; I have this folder, where each note is a file numbered from 1 onwards.
+;; When I want to capture a new fleeting note this creates the file with the next number;
+;; and allows me to type into it. This creates a sort of queue for unprocessed notes.
+(defun wl/org-fleet-next-file ()
+  (let* ((dir (expand-file-name "~/digital-vault/notes/roam/fleeting/"))
+         (files (directory-files dir nil "\\`[0-9]+\\.org\\'"))
+         (nums (mapcar (lambda (f)
+                         (string-to-number (file-name-base f)))
+                       files))
+         (n 1))
+    (while (member n nums)
+      (setq n (1+ n)))
+    (unless (file-directory-p dir)
+      (make-directory dir t))
+    (expand-file-name (format "%d.org" n) dir)))
+
 (use-package org
   :ensure nil
   :hook
@@ -41,18 +58,31 @@
      ("java" . java-ts)))
   ;; org capture
   (org-capture-templates
-   '(("t" "Todo" plain (file+headline "~/digital-vault/notes/tasks.org" "Tasks")
-      "***** TODO %?\nEntered on %U\n %i\n %a")
-     ("j" "Journal" entry (file+datetree "~/digital-vault/notes/journal.org")
-      "* %?\nEntered on %U\n %i\n %a")
+   '(;; TODO lists for important things that I need to do preferably as soon as possible.
+     ("t" "Todo" plain (file+headline "~/digital-vault/notes/tasks.org" "Tasks")
+      "***** TODO %?\nEntered on %U\n %i\n %a" :kill-buffer t)
+     ;; My personal journal/diary. I write my thoughts here.
+     ("j" "Journal" entry (file+olp+datetree "~/digital-vault/notes/journal.org")
+      "* %?\nEntered on %U\n %i\n %a" :kill-buffer t)
+     ;; A place for quick ideas, and noting things that I need to do (eg. in my emacs config).
+     ;; That are not really important enough to be a TODO.
      ("i" "Idea" item (file+headline "~/digital-vault/notes/ideas.org" "Ideas")
-      "%?\n %a")
+      "%?\n %a" :kill-buffer t)
+     ;; In here I just capture no more than a sentence per item, which is just a topic I
+     ;; want to do more research on, or a topic to think about more later.
      ("r" "Research later" item (file+headline "~/digital-vault/notes/ideas.org" "Research later")
-      "%?\n %a")
+      "%?\n %a" :kill-buffer t)
+     ;; Here I put my contemplations and thoughts.
      ("c" "Contemplation" entry (file+headline "~/digital-vault/notes/contemplatio.org" "Contemplations")
-      "* %? %t\n")
-     ("q" "Quote" plain (file+headline "~/digital-vault/notes/contemplatio.org" "Quotes")
-      "#+BEGIN_QUOTE\n%?\n#+END_QUOTE\n\n")))
+      "* %? %t\n" :kill-buffer t)
+     ;; Here I put interesting quotes that I can reflect back on.
+     ("u" "Quote" plain (file+headline "~/digital-vault/notes/contemplatio.org" "Quotes")
+      "#+BEGIN_QUOTE\n%?\n#+END_QUOTE\n\n" :kill-buffer t)
+     ;; Here I write a quick fleeting note which length is from one to three paragraphs.
+     ;; notes from here need further processing (style, aesthetic etc.) and eventually end
+     ;; up in my org-roam directory as proper nodes.
+     ("f" "Fleeting note" plain (file (lambda () (wl/org-fleet-next-file)))
+      "* %?\nEntered on %U\n" :kill-buffer t)))
 
   :custom-face
   (org-level-1 ((t (:inherit variable-pitch :weight bold :height 1.5))))

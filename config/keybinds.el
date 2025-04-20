@@ -157,7 +157,7 @@
         ('org "<leader>l o" 'org-open-at-point)
         ;; org mode roam
         ('org "<leader>r i" 'org-roam-node-insert)
-        ("<leader>r f" 'org-roam-node-file)
+        ("<leader>r f" 'org-roam-node-find)
         ("<leader>r c" 'org-roam-capture)
 
         ;; Eglot.
