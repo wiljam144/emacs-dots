@@ -10,6 +10,9 @@
 (use-package undo-tree
   :ensure t
   :config
+  (unless (file-directory-p (expand-file-name "undo-tree-history" user-emacs-directory))
+    (make-directory (expand-file-name "undo-tree-history" user-emacs-directory) t))
+
   ;; Turn on the global minor mode after the package loads
   (global-undo-tree-mode 1)
   ;; This advice seems to fix global-undo-tree-mode not enabling
