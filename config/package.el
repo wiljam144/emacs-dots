@@ -31,6 +31,7 @@
 (load "~/.config/emacs/config/packages/eglot.el")
 
 ;; OTHER
+(load "~/.config/emacs/config/packages/undo-tree.el")
 (load "~/.config/emacs/config/packages/org-mode.el")
 (load "~/.config/emacs/config/packages/vterm.el")
 

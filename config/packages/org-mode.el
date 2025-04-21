@@ -36,6 +36,7 @@
   (org-startup-with-inline-images t)
   (org-hide-emphasis-markers t)
   (org-hide-leading-stars t)
+  (org-hide-drawer-startup t)
   (org-pretty-entities t)
   (org-ellipsis "…")
   (org-auto-align-tags nil)
@@ -116,3 +117,8 @@
   :hook (after-init . org-roam-db-autosync-mode)
   :custom
   (org-roam-directory (file-truename "~/digital-vault/notes/roam")))
+
+(use-package org-tidy
+  :ensure t
+  :hook
+  (org-mode . org-tidy-mode))

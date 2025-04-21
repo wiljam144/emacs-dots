@@ -7,7 +7,21 @@
 (visual-line-mode t)
 (setq evil-respect-visual-line-mode t)
 
+(use-package undo-tree
+  :ensure t
+  :config
+  ;; Turn on the global minor mode after the package loads
+  (global-undo-tree-mode 1)
+  ;; This advice seems to fix global-undo-tree-mode not enabling
+  ;; the minor mode correctly.
+  (advice-add 'undo-tree-overridden-undo-bindings-p
+            :override
+            (lambda () nil))
+  ;; Ensure every Evil buffer uses undo-tree
+  (add-hook 'evil-local-mode-hook #'turn-on-undo-tree-mode))
+
 (use-package evil
+  :after undo-tree
   :ensure t
   :init
   (setq evil-want-keybinding nil
@@ -16,9 +30,9 @@
         ;; into inferior Emacs default bindings.
         evil-toggle-key "")
   :custom
+  (evil-undo-system 'undo-tree)
   (evil-want-C-u-scroll t)
   (evil-want-fine-undo t)
-  (evil-undo-system 'undo-redo)
   :config
   (evil-mode 1)
   (evil-set-leader nil (kbd "SPC")))
@@ -76,6 +90,15 @@
         ("<leader>w K" 'enlarge-window)
         ("<leader>w L" 'shrink-window-horizontally)
 
+        ;; Undo-Tree.
+        ("<leader>u v" 'undo-tree-visualize)
+        ("<leader>u s"
+         (lambda ()
+           (interactive)
+           (let ((branch (read-number "Enter branch number: ")))
+             (undo-tree-switch-branch branch))))
+        ("r" 'undo-tree-redo)
+
         ;; Lisp.
         ("<leader>l b" 'eval-buffer)
         ("<leader>l e" 'eval-expression)
@@ -114,6 +137,7 @@
            (if (eq major-mode 'org-mode)
                (org-edit-src-code)
              (org-edit-src-exit))))
+        ('org "<leader>m RET" 'org-meta-return)
         ('org "<leader>m h" 'org-metaleft)
         ('org "<leader>m l" 'org-metaright)
         ('org "<leader>m k" 'org-metaup)
@@ -132,7 +156,6 @@
         ;; up
         ('org "<leader>u h" 'outline-up-heading)
         ;; create/capture
-        ('org "<leader>c h" 'org-meta-return)
         ('org "<leader>c l" 'org-insert-link)
         ('org "<leader>c t" 'org-timestamp)
         ('org "<leader>c k" 'org-capture-finalize)
