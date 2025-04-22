@@ -40,7 +40,11 @@
  ;; Don't let the minibuffer muck up my window tiling.
  read-minibuffer-restore-windows t
  ;; Don't keep duplicate entries in kill ring.
- kill-do-not-save-duplicates t)
+ kill-do-not-save-duplicates t
+ ;; I'm from Europe. Seriously how on earth did americans come up
+ ;; with their date formats and week starting on sunday?!
+ european-calendar-style 't
+ calendar-week-start-day 1)
 
 ;; Never mix tabs and spaces. Never use tabs, period.
 ;; We need the setq-default here because this becomes
@@ -82,6 +86,11 @@
  make-backup-files nil
  auto-save-default nil
  create-lockfiles nil)
+;; Revert buffers when the underlying file has changed.
+(global-auto-revert-mode 1)
+
+;; don't blink.
+(blink-cursor-mode 0)
 
 ;; Custom is great, but can cause mess if you are trying to change variable is
 ;; being changed in some custom-save-file invocation.

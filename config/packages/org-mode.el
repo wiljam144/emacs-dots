@@ -30,10 +30,11 @@
                   (with-eval-after-load 'org
                     (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.7)))))
   :custom
-  ;; org styling
+  ;; org startup defaults
   (org-startup-indented t)
   (org-startup-with-latex-preview t)
   (org-startup-with-inline-images t)
+  ;; org styling
   (org-hide-emphasis-markers t)
   (org-hide-leading-stars t)
   (org-hide-drawer-startup t)
@@ -79,6 +80,9 @@
      ;; Here I put interesting quotes that I can reflect back on.
      ("u" "Quote" plain (file+headline "~/digital-vault/notes/contemplatio.org" "Quotes")
       "#+BEGIN_QUOTE\n%?\n#+END_QUOTE\n\n" :kill-buffer t)
+     ;; Anki card to be put into one of my anki decks later.
+     ("a" "Anki card" item (file+headline "~/digital-vault/notes/anki.org" "Cards to Add")
+      "%?\n" :kill-buffer t)
      ;; Here I write a quick fleeting note which length is from one to three paragraphs.
      ;; notes from here need further processing (style, aesthetic etc.) and eventually end
      ;; up in my org-roam directory as proper nodes.
@@ -101,6 +105,10 @@
   :ensure t
   :hook (org-mode . org-modern-mode)
   :custom
+  (org-modern-checkbox
+   '((?X . "✔")
+     (?- . "┅")
+     (?\s . "□")))
   (org-modern-replace-stars "◉○◉○◉")
   (org-modern-star 'replace))
 

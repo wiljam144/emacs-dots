@@ -204,7 +204,7 @@
            (interactive)
            (let ((filepath (if (buffer-file-name)
                                (file-name-directory (buffer-file-name))
-                             "/home/wiljam")))
+                             "~")))
              (start-process "kitty" nil "kitty" filepath))))
         ;; I actually like vterm.
         ("<leader>`" 'vterm-other-window)))
@@ -237,6 +237,8 @@
 (defvar wl/intercept-keymap (make-sparse-keymap)
   "Keymap that intercepts and blocks all C- and M- key combinations.")
 
+;; I'm setting this only to be able to type polish characters.
+(setq ns-option-modifier 'none)
 (defun wl/block-all-control-meta-keys ()
   "Block all control and meta key combinations by setting up an intercept keymap."
   (interactive)

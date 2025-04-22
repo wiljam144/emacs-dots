@@ -2,8 +2,6 @@
 
 (use-package corfu
   :ensure t
-  :init
-  (global-corfu-mode)
   :custom
   (tab-always-indent 'complete)
   (text-mode-ispell-word-completion nil)
@@ -24,6 +22,7 @@
         ([backtab] . corfu-previous))
 
   :hook
+  (after-init . global-corfu-mode)
   (corfu-mode . (lambda ()
                   (setq-local completion-styles '(basic)
                               completion-category-overrides nil
