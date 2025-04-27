@@ -3,7 +3,6 @@
 ;; Things to add:
 ;; - Explore org-mode, org-roam, hyperbole. (maybe pretty dashboard using it)
 ;; - Magit?
-;; - Spell checking with jinx/flyspell
 
 ;; When on new machines comment these lines for the first run.
 (load "~/.config/emacs/config/themes.el")

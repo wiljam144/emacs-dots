@@ -43,3 +43,4 @@
 (load "~/.config/emacs/config/packages/indent-bars.el")
 (load "~/.config/emacs/config/packages/visual-fill-column.el")
 (load "~/.config/emacs/config/packages/ligature.el")
+(load "~/.config/emacs/config/packages/jinx.el")

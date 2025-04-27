@@ -12,7 +12,10 @@
  inhibit-startup-screen t
  ;; Double space is a war crime.
  sentence-end-double-space nil
- ;; I don't care about subprocesses.
+ ;; Make search and completion case insensitive, since I don't want to press shift.
+ case-fold-search t
+ completion-ignore-case t
+ ;; I don't care about sub-processes.
  confirm-kill-processes nil
  ;; Never dare to ding at me.
  ring-bell-function 'ignore
@@ -41,9 +44,9 @@
  read-minibuffer-restore-windows t
  ;; Don't keep duplicate entries in kill ring.
  kill-do-not-save-duplicates t
- ;; I'm from Europe. Seriously how on earth did americans come up
- ;; with their date formats and week starting on sunday?!
- european-calendar-style 't
+ ;; I'm from Europe. Seriously how on earth did Americans come up
+ ;; with their date formats and week starting on Sunday?!
+ european-calendar-style t
  calendar-week-start-day 1)
 
 ;; Never mix tabs and spaces. Never use tabs, period.
@@ -56,17 +59,17 @@
 (setq backward-delete-char-untabify-method 'hungry)
 ;(setq-default electric-indent-inhibit t)
 
-;; Leaving whitespace in code is criminal.
+;; Leaving white-space in code is criminal.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Unicode should always be the default.
 (set-charset-priority 'unicode)
 (prefer-coding-system 'utf-8-unix)
 
-;; Enable more modern behaviour.
+;; Enable more modern behavior.
 (delete-selection-mode t)
 
-;; Fix scrolling behaviour.
+;; Fix scrolling behavior.
 (setq
  fast-but-imprecise-scrolling t
  scroll-conservatively 101

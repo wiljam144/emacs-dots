@@ -49,6 +49,10 @@
   :config
   (evil-collection-init))
 
+(with-eval-after-load 'evil-maps
+  (define-key evil-motion-state-map (kbd "RET") nil)
+  (global-unset-key (kbd "RET")))
+
 ;; Idk if this mess of elisp was worth it instead of
 ;; just a lot of (evil-define-key) invocations,
 ;; but I don't care.
@@ -124,6 +128,7 @@
         ;; Dired.
         ("<leader>d" 'wl/toggle-dired-sidebar)
         ("<leader>D" 'wl/open-dired)
+        ('dired "n" 'find-file)
 
         ;; Projectile.
         ('projectile "SPC p" 'projectile-command-map)
@@ -196,6 +201,9 @@
         ('eglot "<leader>e f" 'eglot-format)
         ('eglot "<leader>e r" 'eglot-rename)
 
+        ;; Jinx.
+        ("<leader>j c" 'jinx-correct)
+        ("<leader>j l" 'jinx-languages)
 
         ;; To be honest I don't really like any of the
         ;; Emacs's terminal options, hence I use kitty in another DE window.
@@ -210,7 +218,8 @@
         ("<leader>`" 'vterm-other-window)))
 
 (setq wl/bindings-insert
-      '(("TAB"
+      '(("RET" 'newline)
+        ("TAB"
          (lambda ()
            (interactive)
            (if (string-match-p "-ts-" (symbol-name major-mode))
