@@ -50,6 +50,18 @@
   (org-insert-heading-respect-content t)
   (org-catch-invisible-edits 'show-and-error)
   (org-return-follows-link t)
+  (org-link-frame-setup
+        '((vm . vm-visit-folder)
+          (vm-imap . vm-visit-imap-folder)
+          (gnus . org-gnus-no-new-news)
+          (file . find-file)
+          (wl . wl-draft)
+          (shell . org-link--open-shell)
+          (term . org-link--open-shell)
+          (mailto . browse-url)
+          (https . browse-url)
+          (http . browse-url)
+          (ftp . browse-url)))
   ;; org src blocks
   (org-src-fontify-natively t)
   (org-edit-src-content-indentation 0)

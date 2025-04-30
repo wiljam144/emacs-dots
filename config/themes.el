@@ -8,15 +8,19 @@
     (set-face-attribute 'line-number nil :background "#222526")
     (set-face-attribute 'line-number-current-line nil :background "#222526")
     (with-eval-after-load 'hl-line
-      (set-face-background 'hl-line "#27292a"))
-    ;; I don't like indent-bars on my small MacBook screen.
-    (with-eval-after-load 'indent-bars
-      (remove-hook 'prog-mode-hook 'indent-bars-mode))))
+      (set-face-background 'hl-line "#27292a"))))
 
 (defun wl/theme-other ()
   (progn
     (load-theme 'nord t)
     (set-face-attribute 'default nil :background "#1c1d23")
+    (with-eval-after-load 'org
+      (custom-set-faces
+       '(org-block ((t (:background "#282a33" :extend t))))
+       '(org-block-begin-line ((t (:background "#282a33" :extend t))))
+       '(org-block-end-line ((t (:background "#282a33" :extend t))))
+       '(org-indent ((t (:background "#1c1d23" :foreground "#1c1d23" :extend t))))
+       '(org-hide ((t (:background "#1c1d23" :foreground "#1c1d23" :extend t))))))
     (with-eval-after-load 'hl-line
       (set-face-background 'hl-line "#22232a"))
     (with-eval-after-load 'indent-bars

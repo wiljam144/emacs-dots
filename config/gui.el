@@ -2,7 +2,7 @@
 
 (load "~/.config/emacs/config/fonts.el")
 
-;; I'm an (emacs)-vim user afterall, so relative numbering it is.
+;; I'm an (emacs)-vim user after all, so relative numbering it is.
 (setq display-line-numbers-type 'relative)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (column-number-mode)
