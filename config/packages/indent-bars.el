@@ -1,11 +1,9 @@
 ;; -*- coding: utf-8; lexical-binding: t -*-
 
-;; I use modified minimal theme from the repo.
-
-;; This function reloads indent-bars so that it can pull
-;; new values from variables.
 (if (not (eq system-type 'darwin))
     (progn
+      ;; This function reloads indent-bars so that it can pull
+      ;; new values from variables.
       (defun wl/restart-bars ()
         (when (bound-and-true-p indent-bars-mode)
           (indent-bars-mode -1)
@@ -17,6 +15,7 @@
         (after-change-major-mode . wl/restart-bars)
         (prog-mode . indent-bars-mode)
         :custom
+        ;; I use modified minimal theme from the repo.
         (indent-bars-pattern ".")
         (indent-bars-width-frac 0.15)
         (indent-bars-pad-frac 0.1)
