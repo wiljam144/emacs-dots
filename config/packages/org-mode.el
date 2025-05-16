@@ -28,7 +28,7 @@
                 (setq-local visual-line-fringe-indicators '(nil right-curly-arrow))))
   (after-init . (lambda ()
                   (with-eval-after-load 'org
-                    (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.7)))))
+                    (setq org-format-latex-options (plist-put org-format-latex-options :scale 2)))))
   :custom
   ;; org startup defaults
   (org-startup-indented t)
@@ -43,6 +43,8 @@
   (org-auto-align-tags nil)
   (org-tags-column 0)
   (org-agenda-tags-column 0)
+  (org-latex-create-formula-image-program 'dvisvgm)
+  (org-preview-latex-image-directory "~/.config/emacs/org-ltx-previews/")
   ;; org organization
   (org-todo-keywords '((sequence "TODO" "WIP" "REVIEWING" "|" "DONE")))
   (org-log-done 'time)
