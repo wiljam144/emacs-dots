@@ -37,6 +37,7 @@
 ;; LANGS
 (load "~/.config/emacs/config/lang/c-cpp.el")
 (load "~/.config/emacs/config/lang/racket.el")
+(load "~/.config/emacs/config/lang/html.el")
 
 ;; QOL
 (load "~/.config/emacs/config/packages/doom-modeline.el")

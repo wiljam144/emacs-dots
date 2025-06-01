@@ -171,6 +171,7 @@
         ('org "<leader>c t" 'org-timestamp)
         ('org "<leader>c k" 'org-capture-finalize)
         ("<leader>c c" 'org-capture)
+        ('org "<leader>c e" 'org-babel-execute-src-block-maybe)
         ;;lists
         ('org "<leader>-" 'org-cycle-list-bullet)
         ;; checkbox & todo

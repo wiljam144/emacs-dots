@@ -34,7 +34,13 @@
         :ts-mode 'python-ts-mode
         :remap 'python-mode
         :url "https://github.com/tree-sitter/tree-sitter-python"
-        :ext '("py"))))
+        :ext '("py"))
+       (make-treesit-recipe
+        :lang 'javascript
+        :ts-mode 'js-ts-mode
+        :remap 'js-mode
+        :url "https://github.com/tree-sitter/tree-sitter-javascript"
+        :ext '("js"))))
 
 (defun wl/install-treesit-grammar (lang)
   "Install tree-sitter grammar if not already installed."

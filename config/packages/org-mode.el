@@ -28,7 +28,7 @@
                 (setq-local visual-line-fringe-indicators '(nil right-curly-arrow))))
   (after-init . (lambda ()
                   (with-eval-after-load 'org
-                    (setq org-format-latex-options (plist-put org-format-latex-options :scale 2)))))
+                    (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5)))))
   :custom
   ;; org startup defaults
   (org-startup-indented t)
@@ -38,14 +38,14 @@
   (org-hide-emphasis-markers t)
   (org-hide-leading-stars t)
   (org-hide-drawer-startup t)
-  (org-pretty-entities t)
   (org-ellipsis "…")
   (org-auto-align-tags nil)
   (org-tags-column 0)
   (org-agenda-tags-column 0)
+  ;; latex
   (org-latex-create-formula-image-program 'dvisvgm)
   (org-preview-latex-image-directory "~/.config/emacs/org-ltx-previews/")
-  ;; org organization
+    ;; org organization
   (org-todo-keywords '((sequence "TODO" "WIP" "REVIEWING" "|" "DONE")))
   (org-log-done 'time)
   ;; org behaviour
@@ -114,6 +114,12 @@
   (org-level-7 ((t (:inherit fixed-pitch))))
   (org-level-8 ((t (:inherit fixed-pitch)))))
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)
+   (latex . t)))
+(setq org-confirm-babel-evaluate nil)
+
 ;; this package is godsend, I swear.
 (use-package org-modern
   :ensure t
@@ -144,3 +150,9 @@
   :ensure t
   :hook
   (org-mode . org-tidy-mode))
+
+(setq org-babel-latex-preamble
+  (lambda (_)
+    "\\documentclass[tikz]{standalone}
+"))
+(setq org-babel-latex-pdf-svg-process "pdf2svg %F %O")
