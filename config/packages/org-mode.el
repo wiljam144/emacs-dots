@@ -28,7 +28,7 @@
                 (setq-local visual-line-fringe-indicators '(nil right-curly-arrow))))
   (after-init . (lambda ()
                   (with-eval-after-load 'org
-                    (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5)))))
+                    (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.7)))))
   :custom
   ;; org startup defaults
   (org-startup-indented t)

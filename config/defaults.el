@@ -76,6 +76,7 @@
  scroll-up-aggressively 0.01
  scroll-down-aggressively 0.01
  auto-window-vscroll nil)
+(pixel-scroll-precision-mode t)
 
 ;; Auto-closing parentheses.
 (setq electric-pair-preserve-balance t

@@ -140,6 +140,18 @@
                            (projectile-find-file)
                          (projectile-switch-project))))
 
+        ;; Competitive programming.
+        ('c++-ts-mode "<f5>" (lambda ()
+                               (interactive)
+                               (tasks-run "Competitive::Compile-C++")))
+        ('c++-ts-mode "<f6>" (lambda ()
+                               (interactive)
+                               (tasks-run "Competitive::Run-C++")))
+        ('c++-ts-mode "<f7>" (lambda ()
+                               (interactive)
+                               (tasks-run "Competitive::Debug-C++")))
+        ('c++-ts-mode "<leader>a s" 'compprog-cpp-skeleton)
+
         ;; Org-mode.
         ;; This one needs to be global so the other branch of the if will work.
         ("<leader>o e"

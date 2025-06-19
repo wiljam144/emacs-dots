@@ -20,6 +20,7 @@
 (load "~/.config/emacs/config/packages/hl-line.el")
 (load "~/.config/emacs/config/packages/dired.el")
 (load "~/.config/emacs/config/packages/woman.el")
+(load "~/.config/emacs/config/packages/tasks.el")
 
 ;; IMPORTANT
 ;; not really important but it needs to be loaded before treesitter.
@@ -29,6 +30,7 @@
 (load "~/.config/emacs/config/packages/vertico.el")
 (load "~/.config/emacs/config/packages/corfu.el")
 (load "~/.config/emacs/config/packages/eglot.el")
+(load "~/.config/emacs/config/packages/dap.el")
 
 ;; OTHER
 (load "~/.config/emacs/config/packages/org-mode.el")
@@ -45,3 +47,5 @@
 (load "~/.config/emacs/config/packages/visual-fill-column.el")
 (load "~/.config/emacs/config/packages/ligature.el")
 (load "~/.config/emacs/config/packages/jinx.el")
+
+(load "~/.config/emacs/config/packages/competetive.el")

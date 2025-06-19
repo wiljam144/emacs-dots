@@ -12,3 +12,5 @@ undo-tree-history/
 org-persist/
 org-ltx-previews/
 tree-sitter/
+.dap-breakpoints
+.extension/

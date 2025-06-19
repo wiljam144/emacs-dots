@@ -9,4 +9,7 @@
   :custom
   (doom-modeline-height 30)
   :hook
-  (after-init . doom-modeline-mode))
+  (after-init . doom-modeline-mode)
+  :custom
+  (doom-modeline-enable-word-count t)
+  (doom-modeline-indent-info t))
