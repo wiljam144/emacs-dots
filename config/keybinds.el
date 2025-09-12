@@ -140,18 +140,6 @@
                            (projectile-find-file)
                          (projectile-switch-project))))
 
-        ;; Competitive programming.
-        ('c++-ts-mode "<f5>" (lambda ()
-                               (interactive)
-                               (tasks-run "Competitive::Compile-C++")))
-        ('c++-ts-mode "<f6>" (lambda ()
-                               (interactive)
-                               (tasks-run "Competitive::Run-C++")))
-        ('c++-ts-mode "<f7>" (lambda ()
-                               (interactive)
-                               (tasks-run "Competitive::Debug-C++")))
-        ('c++-ts-mode "<leader>a s" 'compprog-cpp-skeleton)
-
         ;; Org-mode.
         ;; This one needs to be global so the other branch of the if will work.
         ("<leader>o e"
@@ -217,6 +205,9 @@
         ;; Jinx.
         ("<leader>j c" 'jinx-correct)
         ("<leader>j l" 'jinx-languages)
+
+        ;; Tasks
+        ("<f5>" 'tasks-select)
 
         ;; To be honest I don't really like any of the
         ;; Emacs's terminal options, hence I use kitty in another DE window.

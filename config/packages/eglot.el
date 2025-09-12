@@ -29,5 +29,12 @@
   ;; and I can format myself when i want with eglot-format
   (eglot-ignored-server-capabilities '(:inlayHintProvider :documentOnTypeFormattingProvider))
 
+  :config
+	(fset #'jsonrpc--log-event #'ignore)
+	(setf (plist-get eglot-events-buffer-config :size) 0)
   :hook
   (prog-mode . wl/eglot-ensure-unless-elisp))
+
+(use-package eglot-booster
+  :after eglot
+  :hook (eglot-mode . eglot-booster-mode))

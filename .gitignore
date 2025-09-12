@@ -14,3 +14,4 @@ org-ltx-previews/
 tree-sitter/
 .dap-breakpoints
 .extension/
+tasks-trusted.el

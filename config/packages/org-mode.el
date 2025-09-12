@@ -88,12 +88,6 @@
      ;; want to do more research on, or a topic to think about more later.
      ("r" "Research later" item (file+headline "~/digital-vault/notes/ideas.org" "Research later")
       "%?\n %a" :kill-buffer t)
-     ;; Here I put my contemplations and thoughts.
-     ("c" "Contemplation" entry (file+headline "~/digital-vault/notes/contemplatio.org" "Contemplations")
-      "* %? %t\n" :kill-buffer t)
-     ;; Here I put interesting quotes that I can reflect back on.
-     ("u" "Quote" plain (file+headline "~/digital-vault/notes/contemplatio.org" "Quotes")
-      "#+BEGIN_QUOTE\n%?\n#+END_QUOTE\n\n" :kill-buffer t)
      ;; Anki card to be put into one of my anki decks later.
      ("a" "Anki card" item (file+headline "~/digital-vault/notes/anki.org" "Cards to Add")
       "%?\n" :kill-buffer t)
@@ -113,12 +107,6 @@
   (org-level-6 ((t (:inherit fixed-pitch))))
   (org-level-7 ((t (:inherit fixed-pitch))))
   (org-level-8 ((t (:inherit fixed-pitch)))))
-
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((python . t)
-   (latex . t)))
-(setq org-confirm-babel-evaluate nil)
 
 ;; this package is godsend, I swear.
 (use-package org-modern
@@ -150,6 +138,13 @@
   :ensure t
   :hook
   (org-mode . org-tidy-mode))
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)
+   (latex . t)
+   (emacs-lisp . t)))
+(setq org-confirm-babel-evaluate nil)
 
 (setq org-babel-latex-preamble
   (lambda (_)

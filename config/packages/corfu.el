@@ -13,6 +13,7 @@
   (corfu-cycle t)
   (corfu-preselect 'prompt)
   (corfu-count 5)
+
   :bind
   (:map corfu-map
         ("TAB" . corfu-next)
